@@ -1,7 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Models\Phone;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,8 +14,19 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $this->createDataUser();
+        $this->createDataPhone();
+    }
+
+    private function createDataUser(): void
+    {
+        User::factory(4)->create();
+    }
+
+    private function createDataPhone(): void
+    {
+        Phone::factory(10)->create();
     }
 }
